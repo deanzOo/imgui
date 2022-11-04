@@ -5,8 +5,7 @@ project "ImGui"
 	targetdir ("bin/" .. output_dir .. "/%{prj.name}")
 	objdir ("int/" .. output_dir .. "/%{prj.name}")
 
-	files
-	{
+	files {
 		"imconfig.h",
 		"imgui.h",
 		"imgui.cpp",
@@ -16,8 +15,13 @@ project "ImGui"
 		"imstb_rectpack.h",
 		"imstb_textedit.h",
 		"imstb_truetype.h",
-		"imgui_demo.cpp"
+		"imgui_demo.cpp",
+        "imgui_tables.cpp"
 	}
+
+    includedirs {
+        "backends"
+    }
 
 	filter "system:windows"
 		systemversion "latest"
