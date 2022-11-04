@@ -1,9 +1,11 @@
 project "ImGui"
 	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
-	targetdir ("bin/" .. output_dir .. "/%{prj.name}")
-	objdir ("int/" .. output_dir .. "/%{prj.name}")
+	targetdir ("%{wks.location}/bin/" .. output_dir .. "/%{prj.name}")
+	objdir ("%{wks.location}/int/" .. output_dir .. "/%{prj.name}")
 
 	files {
 		"imconfig.h",
@@ -19,16 +21,10 @@ project "ImGui"
         "imgui_tables.cpp"
 	}
 
-	filter "system:windows"
-		systemversion "latest"
-		cppdialect "C++17"
-		staticruntime "On"
-
 	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
 		runtime "Release"
-        buildoptions "/MT"
 		optimize "on"
